@@ -63,7 +63,7 @@ keymap("n", "<C-9>", "<Cmd>BufferGoto 9<CR>", vim.tbl_extend("keep", opts, { des
 keymap("n", "<leader>p", "<Cmd>BufferLinePick<CR>", vim.tbl_extend("keep", opts, { desc = "Pick Tab" }))
 
 -- Close buffer
-keymap("n", "<leader>bx", ":bd<CR>", vim.tbl_extend("keep", opts, { desc = "Close Buffer" }))
+keymap("n", "<leader>bx", ":bd!<CR>", vim.tbl_extend("keep", opts, { desc = "Close Buffer" }))
 keymap("n", "<leader>bw", ":bw<CR>", vim.tbl_extend("keep", opts, { desc = "Wipe Buffer:WARNING" }))
 
 -----------------------------
