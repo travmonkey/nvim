@@ -18,6 +18,8 @@ return {
 				python = { "isort", "black" },
 				ruby = { "rubocop" },
         bash = { "shfmt" },
+        c = {"clang-format"},
+        cpp = {"clang-format"}
 			},
 		})
 		vim.keymap.set({ "n", "v" }, "<leader>cf", function()
