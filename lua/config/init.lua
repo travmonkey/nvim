@@ -1,2 +1,2 @@
-require("config.keymaps")
+require("config.keybinds")
 require("config.settings")
