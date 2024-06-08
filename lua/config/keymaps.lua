@@ -125,12 +125,14 @@ keymap("n", "<leader>e", ":Neotree filesystem reveal left<CR>")
 keymap("n", "<leader>ck", vim.lsp.buf.hover, vim.tbl_extend("keep", opts, { desc = "Hover" }))
 keymap("n", "<leader>cd", vim.lsp.buf.definition, vim.tbl_extend("keep", opts, { desc = "Definition" }))
 keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("keep", opts, { desc = "Code Actions" }))
+keymap("n", "<leader>cr", vim.lsp.buf.references, vim.tbl_extend("keep", opts, {desc = "References"}))
+keymap("n", "<leader>ce", vim.lsp.buf.rename, vim.tbl_extend("keep", opts, {desc = "Refactor"}))
 
 -----------------------------
 --  */ -- terminal -- /*
 -----------------------------
 
-keymap("t", "<Esc>", "<C-\\><C-n>", vim.tbl_extend("keep", opts, { desc = "" }))
+keymap("t", "<S-Tab>", "<C-\\><C-n>", vim.tbl_extend("keep", opts, { desc = "" }))
 keymap("n", "<leader>t", "<Cmd>ToggleTerm<CR>", vim.tbl_extend("keep", opts, { desc = "Toggle Term" }))
 keymap("n", "<leader>gt", "<Cmd>lua Lazygit_toggle()<CR>", vim.tbl_extend("keep", opts, { desc = "Open Git" }))
 
