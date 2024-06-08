@@ -48,23 +48,14 @@ keymap("n", "<leader>nh", ":nohl<CR>", vim.tbl_extend("keep", opts, { desc = "Cl
 keymap("n", "<tab>", "<Cmd>BufferLineCycleNext<CR>", vim.tbl_extend("keep", opts, { desc = "" }))
 keymap("n", "<S-tab>", "<Cmd>BufferLineCyclePrev<CR>", vim.tbl_extend("keep", opts, { desc = "" }))
 
--- Goto buffer in position
-keymap("n", "<C-1>", "<Cmd>BufferGoto 1<CR>", vim.tbl_extend("keep", opts, { desc = "" }))
-keymap("n", "<C-2>", "<Cmd>BufferGoto 2<CR>", vim.tbl_extend("keep", opts, { desc = "" }))
-keymap("n", "<C-3>", "<Cmd>BufferGoto 3<CR>", vim.tbl_extend("keep", opts, { desc = "" }))
-keymap("n", "<C-4>", "<Cmd>BufferGoto 4<CR>", vim.tbl_extend("keep", opts, { desc = "" }))
-keymap("n", "<C-5>", "<Cmd>BufferGoto 5<CR>", vim.tbl_extend("keep", opts, { desc = "" }))
-keymap("n", "<C-6>", "<Cmd>BufferGoto 6<CR>", vim.tbl_extend("keep", opts, { desc = "" }))
-keymap("n", "<C-7>", "<Cmd>BufferGoto 7<CR>", vim.tbl_extend("keep", opts, { desc = "" }))
-keymap("n", "<C-8>", "<Cmd>BufferGoto 8<CR>", vim.tbl_extend("keep", opts, { desc = "" }))
-keymap("n", "<C-9>", "<Cmd>BufferGoto 9<CR>", vim.tbl_extend("keep", opts, { desc = "" }))
-
 -- Select Tab
 keymap("n", "<leader>p", "<Cmd>BufferLinePick<CR>", vim.tbl_extend("keep", opts, { desc = "Pick Tab" }))
 
+-- Pin Tab
+keymap("n", "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", vim.tbl_extend("keep", opts, { desc = "Pin Tab" }))
+
 -- Close buffer
-keymap("n", "<leader>bx", ":bd!<CR>", vim.tbl_extend("keep", opts, { desc = "Close Buffer" }))
-keymap("n", "<leader>bw", ":bw<CR>", vim.tbl_extend("keep", opts, { desc = "Wipe Buffer:WARNING" }))
+keymap("n", "<leader>bx", ":bp | bd! #<CR>", vim.tbl_extend("keep", opts, { desc = "Close Buffer" }))
 
 -----------------------------
 --  */ -- Telescope -- /*
