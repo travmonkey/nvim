@@ -56,16 +56,13 @@ return {
 				filetypes = { "c", "cpp" },
 				root_dir = lspconfig.util.root_pattern("CmakeLists.txt", ".git"),
 				cmd = {
-					"/usr/bin/clangd",
+					"clangd",
 					"--background-index",
 					"--clang-tidy",
 					"--header-insertion=iwyu",
 					"--header-insertion-decorators=0",
 					"--pch-storage=memory",
-          -- "-I /usr/bin/clang++",
-          -- "-I/usr/include/c++/v1/",
-					-- "--compile-commands-dir=/home/travis/custom/build/",
-          -- "--query-driver=/usr/include/c++/14.1.1/",
+          "--query-driver=/usr/bin/arm-none-eabi-g++,/usr/bin/arm-none-eabi-gcc"
 				},
 			})
 		end,
