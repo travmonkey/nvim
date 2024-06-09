@@ -43,14 +43,9 @@ return {
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
 			})
-    --   lspconfig.ccls.setup({
-    --     capabilities = capabilities,
-				-- root_dir = lspconfig.util.root_pattern("CmakeLists.txt", ".git"),
-    --     cmd = {
-    --       "ccls",
-    --       "--compile-commands-dir=/home/travis/custom/build/"
-    --     }
-    --   })
+      lspconfig.prosemd_lsp.setup({
+        capabilities = capabilities,
+      })
 			lspconfig.clangd.setup({
 				capabilities = capabilities,
 				filetypes = { "c", "cpp" },

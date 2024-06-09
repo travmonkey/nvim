@@ -17,9 +17,10 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				ruby = { "rubocop" },
-        bash = { "shfmt" },
-        c = {"clang-format"},
-        cpp = {"clang-format"}
+				bash = { "shfmt" },
+				c = { "clang-format" },
+				cpp = { "clang-format" },
+				md = { "mdformat" },
 			},
 		})
 		vim.keymap.set({ "n", "v" }, "<leader>cf", function()
