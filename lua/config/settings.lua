@@ -39,3 +39,7 @@ vim.opt.clipboard:append("unnamedplus") -- System clipboard
 -- Keyboard splitting
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+-- Enable indent based folding
+vim.wo.foldmethod = "indent"
+vim.wo.foldlevel = 99

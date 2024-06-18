@@ -64,6 +64,8 @@ keymap("n", "<leader>bx", ":bp | bd! #<CR>", vim.tbl_extend("keep", opts, { desc
 local builtin = require("telescope.builtin")
 keymap("n", "<leader>ff", builtin.find_files, vim.tbl_extend("keep", opts, { desc = "Find Files" }))
 keymap("n", "<leader>fg", builtin.live_grep, vim.tbl_extend("keep", opts, { desc = "Grep Files" }))
+keymap('n', '<leader>fb', ':Telescope buffers<CR>', vim.tbl_extend("keep", opts, { desc = "Find Buffers" }))
+keymap('n', '<leader>fh', ':Telescope help_tags<CR>', vim.tbl_extend("keep", opts, { desc = "Find Help Tags"}))
 
 -----------------------------
 --  */ -- Chat-GPT -- /*
@@ -108,6 +110,13 @@ end
 
 -- Opening Neotree to the left / Close it with q
 keymap("n", "<leader>e", ":Neotree filesystem reveal left<CR>")
+
+-----------------------------
+--  */ -- Aerial -- /*
+-----------------------------
+
+-- Open Aerial to the right / Close it with q
+keymap("n", "<leader>r",  "<cmd>AerialOpen right<CR>")
 
 -----------------------------
 --  */ -- lsp-config -- /*
