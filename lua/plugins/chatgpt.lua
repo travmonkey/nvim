@@ -1,10 +1,15 @@
 return {
-	"robitx/gp.nvim",
+	"jackMort/ChatGPT.nvim",
+	event = "VeryLazy",
 	config = function()
-		require("gp").setup({
-      -- Make sure you change this to your home directory
-      -- Put your openai_api_key in the file and chmod 400 it for security
-			openai_api_key = { "cat", "/home/travis/.open_api_key" },
-		})
+		require("chatgpt").setup({
+      api_key_cmd = "cat /home/travis/.open_api_key"
+    })
 	end,
+	dependencies = {
+		"MunifTanjim/nui.nvim",
+		"nvim-lua/plenary.nvim",
+		"folke/trouble.nvim",
+		"nvim-telescope/telescope.nvim",
+	},
 }

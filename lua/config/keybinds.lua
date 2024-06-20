@@ -64,59 +64,45 @@ keymap("n", "<leader>bx", ":bp | bd! #<CR>", vim.tbl_extend("keep", opts, { desc
 local builtin = require("telescope.builtin")
 keymap("n", "<leader>ff", builtin.find_files, vim.tbl_extend("keep", opts, { desc = "Find Files" }))
 keymap("n", "<leader>fg", builtin.live_grep, vim.tbl_extend("keep", opts, { desc = "Grep Files" }))
-keymap('n', '<leader>fb', ':Telescope buffers<CR>', vim.tbl_extend("keep", opts, { desc = "Find Buffers" }))
-keymap('n', '<leader>fh', ':Telescope help_tags<CR>', vim.tbl_extend("keep", opts, { desc = "Find Help Tags"}))
+keymap("n", "<leader>fb", ":Telescope buffers<CR>", vim.tbl_extend("keep", opts, { desc = "Find Buffers" }))
+keymap("n", "<leader>fh", ":Telescope help_tags<CR>", vim.tbl_extend("keep", opts, { desc = "Find Help Tags" }))
 
 -----------------------------
 --  */ -- Chat-GPT -- /*
 -----------------------------
 
-local gpt_keybinds = {
-	["+Chat GPT / AI"] = {
-		-- Code Commands
-		e = { "<Cmd>GpRewrite<CR>", "Rewrite Selected Code" },
-		g = { "<Cmd>GpAppend<CR>", "Generate New Code" },
-		-- Chat Commands
-		n = { "<Cmd>GpChatNew vsplit<CR>", "New Chat" },
-		f = { "<Cmd>GpChatFinder tabnew<CR>", "Search Chats" },
-		t = { "<Cmd>GpChatToggle vsplit<CR>", "Toggle Chat" },
-		r = { "<Cmd>GpChatRespond<CR>", "Ask For A Response" },
-		-- Other
-		ma = { "<Cmd>GpAgent<CR>", "Display Current Model" },
-		mc = { "<Cmd>GpNextAgent<CR>", "Change Current Model (WARNING)" },
+wk.register({
+	a = {
+		name = "ChatGPT",
+		c = { "<cmd>ChatGPT<CR>", "ChatGPT" },
+		e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction", mode = { "n", "v" } },
+		g = { "<cmd>ChatGPTRun grammar_correction<CR>", "Grammar Correction", mode = { "n", "v" } },
+		t = { "<cmd>ChatGPTRun translate<CR>", "Translate", mode = { "n", "v" } },
+		k = { "<cmd>ChatGPTRun keywords<CR>", "Keywords", mode = { "n", "v" } },
+		d = { "<cmd>ChatGPTRun docstring<CR>", "Docstring", mode = { "n", "v" } },
+		a = { "<cmd>ChatGPTRun add_tests<CR>", "Add Tests", mode = { "n", "v" } },
+		o = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code", mode = { "n", "v" } },
+		s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize", mode = { "n", "v" } },
+		f = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs", mode = { "n", "v" } },
+		x = { "<cmd>ChatGPTRun explain_code<CR>", "Explain Code", mode = { "n", "v" } },
+		r = { "<cmd>ChatGPTRun roxygen_edit<CR>", "Roxygen Edit", mode = { "n", "v" } },
+		l = { "<cmd>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis", mode = { "n", "v" } },
 	},
-}
-
--- Binding all the commands in both visual and normal mode
-for mode, default in pairs({ n = "a", v = "a" }) do
-	for name, category in pairs(gpt_keybinds) do
-		for key, binding in pairs(category) do
-			local command = binding[1]
-			local description = binding[2]
-			wk.register({
-				[default] = {
-					name = name,
-					mode = mode,
-					[key] = { command, description },
-				},
-			}, { prefix = "<leader>" })
-		end
-	end
-end
+}, { prefix = "<leader>" })
 
 -----------------------------
 --  */ -- neo-tree -- /*
 -----------------------------
 
 -- Opening Neotree to the left / Close it with q
-keymap("n", "<leader>e", ":Neotree filesystem reveal left<CR>")
+keymap("n", "<leader>e", ":Neotree filesystem reveal left<CR>", vim.tbl_extend("keep", opts, { desc = "Open Neotree" }))
 
 -----------------------------
 --  */ -- Aerial -- /*
 -----------------------------
 
--- Open Aerial to the right / Close it with q
-keymap("n", "<leader>r",  "<cmd>AerialOpen right<CR>")
+-- Toggle Aerial to the right, and bring the cursor in.
+keymap("n", "<leader>r", "<cmd>AerialToggle! right<CR>", vim.tbl_extend("keep", opts, { desc = "Open Aerial" }))
 
 -----------------------------
 --  */ -- lsp-config -- /*
@@ -125,8 +111,8 @@ keymap("n", "<leader>r",  "<cmd>AerialOpen right<CR>")
 keymap("n", "<leader>ck", vim.lsp.buf.hover, vim.tbl_extend("keep", opts, { desc = "Hover" }))
 keymap("n", "<leader>cd", vim.lsp.buf.definition, vim.tbl_extend("keep", opts, { desc = "Definition" }))
 keymap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("keep", opts, { desc = "Code Actions" }))
-keymap("n", "<leader>cr", vim.lsp.buf.references, vim.tbl_extend("keep", opts, {desc = "References"}))
-keymap("n", "<leader>ce", vim.lsp.buf.rename, vim.tbl_extend("keep", opts, {desc = "Refactor"}))
+keymap("n", "<leader>cr", vim.lsp.buf.references, vim.tbl_extend("keep", opts, { desc = "References" }))
+keymap("n", "<leader>ce", vim.lsp.buf.rename, vim.tbl_extend("keep", opts, { desc = "Refactor" }))
 
 -----------------------------
 --  */ -- terminal -- /*
@@ -141,10 +127,10 @@ keymap("n", "<leader>gt", "<Cmd>lua Lazygit_toggle()<CR>", vim.tbl_extend("keep"
 -----------------------------
 
 wk.register({
-	am = {
-		name = "Models",
-		mode = { "n", "v" },
-	},
+	-- am = {
+	-- 	name = "Models",
+	-- 	mode = { "n", "v" },
+	-- },
 	s = {
 		name = "Splits",
 	},
@@ -165,4 +151,7 @@ wk.register({
 	b = {
 		name = "Buffers",
 	},
+  x = {
+    name = "Trouble",
+  }
 }, { prefix = "<leader>" })
