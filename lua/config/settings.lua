@@ -5,6 +5,9 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
+
 -- Disable Mouse
 vim.cmd("set mouse=")
 
