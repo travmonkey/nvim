@@ -3,7 +3,8 @@ local opts = { noremap = true, silent = true }
 
 -- Shorten the function name
 local keymap = vim.keymap.set
--- Spagetti Keybind Declarations
+
+-- For Keybind Declarations
 local wk = require("which-key")
 
 -- Map space as the leader key
@@ -71,24 +72,25 @@ keymap("n", "<leader>fh", ":Telescope help_tags<CR>", vim.tbl_extend("keep", opt
 --  */ -- Chat-GPT -- /*
 -----------------------------
 
-wk.register({
-	a = {
-		name = "ChatGPT",
-		c = { "<cmd>ChatGPT<CR>", "ChatGPT" },
-		e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction", mode = { "n", "v" } },
-		g = { "<cmd>ChatGPTRun grammar_correction<CR>", "Grammar Correction", mode = { "n", "v" } },
-		t = { "<cmd>ChatGPTRun translate<CR>", "Translate", mode = { "n", "v" } },
-		k = { "<cmd>ChatGPTRun keywords<CR>", "Keywords", mode = { "n", "v" } },
-		d = { "<cmd>ChatGPTRun docstring<CR>", "Docstring", mode = { "n", "v" } },
-		a = { "<cmd>ChatGPTRun add_tests<CR>", "Add Tests", mode = { "n", "v" } },
-		o = { "<cmd>ChatGPTRun optimize_code<CR>", "Optimize Code", mode = { "n", "v" } },
-		s = { "<cmd>ChatGPTRun summarize<CR>", "Summarize", mode = { "n", "v" } },
-		f = { "<cmd>ChatGPTRun fix_bugs<CR>", "Fix Bugs", mode = { "n", "v" } },
-		x = { "<cmd>ChatGPTRun explain_code<CR>", "Explain Code", mode = { "n", "v" } },
-		r = { "<cmd>ChatGPTRun roxygen_edit<CR>", "Roxygen Edit", mode = { "n", "v" } },
-		l = { "<cmd>ChatGPTRun code_readability_analysis<CR>", "Code Readability Analysis", mode = { "n", "v" } },
-	},
-}, { prefix = "<leader>" })
+wk.add({
+  { "<leader>a", group = "ChatGPT" },
+  { "<leader>ac", "<cmd>ChatGPT<CR>", desc = "ChatGPT" },
+  {
+    mode = { "n", "v" },
+    { "<leader>aa", "<cmd>ChatGPTRun add_tests<CR>", desc = "Add Tests" },
+    { "<leader>ad", "<cmd>ChatGPTRun docstring<CR>", desc = "Docstring" },
+    { "<leader>ae", "<cmd>ChatGPTEditWithInstruction<CR>", desc = "Edit with instruction" },
+    { "<leader>af", "<cmd>ChatGPTRun fix_bugs<CR>", desc = "Fix Bugs" },
+    { "<leader>ag", "<cmd>ChatGPTRun grammar_correction<CR>", desc = "Grammar Correction" },
+    { "<leader>ak", "<cmd>ChatGPTRun keywords<CR>", desc = "Keywords" },
+    { "<leader>al", "<cmd>ChatGPTRun code_readability_analysis<CR>", desc = "Code Readability Analysis" },
+    { "<leader>ao", "<cmd>ChatGPTRun optimize_code<CR>", desc = "Optimize Code" },
+    { "<leader>ar", "<cmd>ChatGPTRun roxygen_edit<CR>", desc = "Roxygen Edit" },
+    { "<leader>as", "<cmd>ChatGPTRun summarize<CR>", desc = "Summarize" },
+    { "<leader>at", "<cmd>ChatGPTRun translate<CR>", desc = "Translate" },
+    { "<leader>ax", "<cmd>ChatGPTRun explain_code<CR>", desc = "Explain Code" },
+  },
+})
 
 -----------------------------
 --  */ -- neo-tree -- /*
@@ -126,32 +128,12 @@ keymap("n", "<leader>gt", "<Cmd>lua Lazygit_toggle()<CR>", vim.tbl_extend("keep"
 -- */ -- Register Names for whichkey -- /*
 -----------------------------
 
-wk.register({
-	-- am = {
-	-- 	name = "Models",
-	-- 	mode = { "n", "v" },
-	-- },
-	s = {
-		name = "Splits",
-	},
-	g = {
-		name = "Git",
-		mode = "n",
-	},
-	n = {
-		name = "Line Numbers",
-	},
-	f = {
-		name = "Find",
-	},
-	c = {
-		name = "LSP",
-		mode = { "n", "v" },
-	},
-	b = {
-		name = "Buffers",
-	},
-  x = {
-    name = "Trouble",
-  }
-}, { prefix = "<leader>" })
+wk.add({
+  { "<leader>b", group = "Buffers" },
+  { "<leader>f", group = "Find" },
+  { "<leader>g", group = "Git" },
+  { "<leader>n", group = "Line Numbers" },
+  { "<leader>s", group = "Splits" },
+  { "<leader>x", group = "Trouble" },
+  { "<leader>c", group = "LSP", mode = { "n", "v" } },
+})
