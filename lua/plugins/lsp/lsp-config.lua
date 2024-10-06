@@ -24,12 +24,15 @@ return {
 			})
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
-				filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+				-- filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
 				cmd = { "typescript-language-server", "--stdio" },
 			})
 			lspconfig.basedpyright.setup({
 				capabilities = capabilities,
 			})
+      lspconfig.nil_ls.setup({
+        capabilities = capabilities,
+      })
 			lspconfig.bashls.setup({
 				capabilities = capabilities,
 			})
@@ -46,18 +49,35 @@ return {
       lspconfig.prosemd_lsp.setup({
         capabilities = capabilities,
       })
+    --   lspconfig.ccls.setup({
+    --     capabilities = capabilities,
+    --     filetypes = { "c", "cpp", "h", "hpp" },
+    --     -- root_dir = ('CMakeLists.txt'),
+				-- root_dir = function(fname)
+    --       local root = lspconfig.util.root_pattern("CMakeLists.txt")(fname)
+    --       while root and root:match('/src$') do
+    --         root = lspconfig.util.path.dirname(root)
+    --         root = lspconfig.util.root_pattern('CMakeLists.txt', '.git')(root)
+    --       end
+    --       return root
+    --     end,
+    --     init_options = {
+    --       compilationDatabaseDirectory = "build";
+    --     },
+    --   })
 			lspconfig.clangd.setup({
 				capabilities = capabilities,
 				filetypes = { "c", "cpp" },
 				root_dir = lspconfig.util.root_pattern("CmakeLists.txt", ".git"),
 				cmd = {
 					"clangd",
+          "--compile-commands-dir=/home/travis/repos/travyboard/firmware/build/",
 					"--background-index",
-					"--clang-tidy",
+					-- "--clang-tidy",
 					"--header-insertion=iwyu",
 					"--header-insertion-decorators=0",
 					"--pch-storage=memory",
-          "--query-driver=/usr/bin/arm-none-eabi-g++,/usr/bin/arm-none-eabi-gcc"
+          "--query-driver=/nix/store/v6qyp70ksb0gynr6nn9h6bx6cwq9k5ds-gcc-arm-embedded-12.3.rel1/bin/arm-none-eabi-g++,/run/current-system/sw/bin/arm-none-eabi-gcc"
 				},
 			})
 		end,
