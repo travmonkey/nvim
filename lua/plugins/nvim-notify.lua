@@ -7,7 +7,7 @@ return {
       fps = 144,
       render = "compact",
       stages = "slide",
-      timeout = 2000,
+      timeout = 750,
     })
   end,
 }
