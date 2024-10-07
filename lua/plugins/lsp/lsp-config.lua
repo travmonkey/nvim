@@ -40,31 +40,12 @@ return {
 				capabilities = capabilities,
 				diagnostics = false,
 			})
-			-- lspconfig.cssls.setup({
-			-- 	capabilities = capabilities,
-			-- })
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
 			})
       lspconfig.prosemd_lsp.setup({
         capabilities = capabilities,
       })
-    --   lspconfig.ccls.setup({
-    --     capabilities = capabilities,
-    --     filetypes = { "c", "cpp", "h", "hpp" },
-    --     -- root_dir = ('CMakeLists.txt'),
-				-- root_dir = function(fname)
-    --       local root = lspconfig.util.root_pattern("CMakeLists.txt")(fname)
-    --       while root and root:match('/src$') do
-    --         root = lspconfig.util.path.dirname(root)
-    --         root = lspconfig.util.root_pattern('CMakeLists.txt', '.git')(root)
-    --       end
-    --       return root
-    --     end,
-    --     init_options = {
-    --       compilationDatabaseDirectory = "build";
-    --     },
-    --   })
 			lspconfig.clangd.setup({
 				capabilities = capabilities,
 				filetypes = { "c", "cpp" },
