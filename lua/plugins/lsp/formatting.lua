@@ -22,6 +22,7 @@ return {
 				c = { "clang-format" },
 				cpp = { "clang-format" },
 				md = { "mdformat" },
+        nix = {"nixfmt"},
 			},
 		})
 		vim.keymap.set({ "n", "v" }, "<leader>cf", function()
